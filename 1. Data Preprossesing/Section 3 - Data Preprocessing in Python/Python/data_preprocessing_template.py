@@ -1,15 +1,11 @@
-# Data Preprocessing Template
+#data preprocessing
 
-# Importing the libraries
+#importing libraries
 import numpy as np
-import matplotlib.pyplot as plt
-import pandas as pd
+import matplotlib.pyplot as plt #creates plot
+import pandas as pd #to import and manage datasets
 
-# Importing the dataset
-dataset = pd.read_csv('Data.csv')
-X = dataset.iloc[:, :-1].values
-y = dataset.iloc[:, -1].values
+#importing the dataset
+#this has to be in the same folder with dataset to that folder be working directory
 
-# Splitting the dataset into the Training set and Test set
-from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+dataset = pd.read_csv("Data.csv")
