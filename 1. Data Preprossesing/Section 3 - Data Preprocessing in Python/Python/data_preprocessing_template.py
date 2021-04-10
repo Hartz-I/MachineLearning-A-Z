@@ -24,3 +24,30 @@ imputer = imputer.fit(X[: , 1:3]) #fitting into all the rows and 2nd and 3rd col
 
 X[: , 1:3] = imputer.transform(X[: , 1:3]) #replacing the column with mean encluded columns
 
+#handling catagorical data
+#converting text to numbers
+#a individual number for individual names
+from sklearn.preprocessing import LabelEncoder , OneHotEncoder
+
+labelencoder_X = LabelEncoder() #putting the class into variables
+
+X[: , 0] = labelencoder_X.fit_transform(X[: , 0]) #only on first column of X
+
+#we have to create "dummy var" to prevent the computer from thing higher number as higher country somehow!
+
+#onehotencoder = OneHotEncoder(categories=) #on which column
+#X = onehotencoder.fit_transform(X).toarray 
+#this doesn't work anymore!
+
+#we simply transform the column into that
+from sklearn.compose import ColumnTransformer
+#name of column , what we are doing , on which column
+ct = ColumnTransformer([('Country' , OneHotEncoder() , [0])] , remainder="passthrough")
+X = ct.fit_transform(X) #applying the transformation
+
+#we won't have to use the one hot encoder for the Y.
+# as it is the dependant variable the model will automatically know it's catagorical!
+
+labelencoder_Y = LabelEncoder() #putting the class into variables
+
+Y = labelencoder_X.fit_transform(Y) #only on first column of Y
