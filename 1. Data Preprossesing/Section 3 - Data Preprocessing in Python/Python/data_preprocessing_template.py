@@ -51,3 +51,24 @@ X = ct.fit_transform(X) #applying the transformation
 labelencoder_Y = LabelEncoder() #putting the class into variables
 
 Y = labelencoder_X.fit_transform(Y) #only on first column of Y
+
+
+#Spliting test and train set
+from sklearn.model_selection import train_test_split #does the name
+
+X_train , X_test , Y_train , Y_test = train_test_split(X, Y, test_size = 0.2, random_state = 0) #splitting the data! easy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
