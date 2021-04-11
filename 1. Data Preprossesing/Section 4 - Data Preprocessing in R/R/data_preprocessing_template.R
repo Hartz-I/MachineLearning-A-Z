@@ -35,5 +35,8 @@ split = sample.split(dataset$Purchased , SplitRatio = 0.8) #dividing
 training_set = subset(dataset , split == TRUE) #take the element if in TRUE position
 test_set = subset(dataset , split == FALSE)
 
+#feature scaling
+training_set[, 2:3] = scale(training_set[, 2:3])
+test_set[, 2:3] = scale(test_set[, 2:3])
 
 
